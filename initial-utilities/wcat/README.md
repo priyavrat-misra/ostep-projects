@@ -20,8 +20,7 @@ prompt>
 The `test-wcat.sh` script is just a wrapper for the `run-tests.sh` script in
 the `tester` directory of this repository. This program has a few options; see
 the relevant
-[README](../../tester/README.md)
-for details.
+[README](../../tester/README.md) for details.
 
 
 

@@ -14,9 +14,11 @@ int compute_hash(char *word, int n) {
 void print_if_contains(char *word, int n, int ph, char *line, int len) {
 	// Rabin Karp string matching algorithm
 	if (len >= n) {
-		int msv = 1; // will be multiplied to the most significant char
+		int msv = 1;
 		int i, j, d = 1 << 8*sizeof(char);
-		for (i = 0; i < n - 1; ++i)  // h = pow(d, n - 1) % q
+
+		// msv will be multiplied to the most significant char
+		for (i = 0; i < n - 1; ++i)  // msv = pow(d, n - 1) % q
 			msv = (msv * d) % q;
 
 		int th = compute_hash(line, n); // hash for 1st window of text
@@ -31,6 +33,7 @@ void print_if_contains(char *word, int n, int ph, char *line, int len) {
 					return;
 				}
 			}
+			// (a*b)%c = (a%c * b%c)%c
 			th = (((th - line[i]*msv % q)*d % q) + line[i+n]) % q;
 		}
 	}
